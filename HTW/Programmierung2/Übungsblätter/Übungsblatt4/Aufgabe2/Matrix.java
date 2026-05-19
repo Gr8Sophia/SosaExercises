@@ -10,11 +10,11 @@ public class Matrix<T extends Number> {
         this.data = new Number[rows][columns];
     }
 
-    public Number getElement(int row, int column) {
+    public T getElement(int row, int column) {
         if (row < 0 || column < 0 || row >= rows || column >= columns) {
             throw new IndexOutOfBoundsException("Ungültiger Row or Column");
         }
-        return data[row][column];
+        return (T) data[row][column];
     }
 
     public void setElement(int row, int column, T value) {
