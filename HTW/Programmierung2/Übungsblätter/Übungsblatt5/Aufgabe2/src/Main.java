@@ -1,6 +1,6 @@
 import java.util.function.IntUnaryOperator;
 
-class Main {
+class Main{
     public static void main(String[] args) {
 
 
@@ -39,6 +39,10 @@ class Main {
             // fib(n) = fib(n-1) + fib(n-2)
         };
 
+        // default Funktion conditionalInput Benutzung
+        MyFunction myFunction = x -> x*x;
+        MyFunction input = myFunction.conditionalInput(x -> x%2==0 );
+
         System.out.println("x^2: Lamda");
         Printer.applyAndPrint(2,5,operatorPower);
         System.out.println(" ");
@@ -49,6 +53,10 @@ class Main {
         System.out.println(" ");
         System.out.println("x: x^(x+1)");
         Printer.applyAndPrint(2,5, operatoriii);
+        System.out.println(" ");
+        System.out.println(" ");
+        System.out.println("Testen der default Methoden aus MyFunction: ");
+       Printer.applyAndPrint(2,5, input);
         System.out.println(" ");
         System.out.println(" ");
 
