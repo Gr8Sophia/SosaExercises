@@ -5,24 +5,40 @@ class Main {
 
 
         // Implemenation des Funktionalen Interfaces IntUnaryOperator als Lamda Funktion
-        IntUnaryOperator operatorPower = x -> x*x;
+        IntUnaryOperator operatorPower = x -> x * x;
 
         IntUnaryOperator operatorFakult = x -> {
             int ergebnis = 1;
             for (int i = x; i > 0; i--) {
-            ergebnis*=i;
+                ergebnis *= i;
             }
             return ergebnis;
         };
 
-        IntUnaryOperator operatoriii = x ->{
-            int power = x+1;
+        IntUnaryOperator operatoriii = x -> {
+            int power = x + 1;
             int ergebnis = x;
-            return (int) Math.pow(ergebnis,power);
+            return (int) Math.pow(ergebnis, power);
         };
 
+        IntUnaryOperator operatorFibonacci = x -> {
+            if (x == 0) {
+                return 0;
+            }
+            if (x == 1) {
+                return 1;
+            }
+            int jetzige = 1;
+            int vorherige = 0;
+            for (int i = 2; i <= x; i++) {
+                int neueZahl = vorherige + jetzige;
+                vorherige = jetzige;
+                jetzige = neueZahl;
+            }
+            return jetzige;
+            // fib(n) = fib(n-1) + fib(n-2)
+        };
 
-        
         System.out.println("x^2: Lamda");
         Printer.applyAndPrint(2,5,operatorPower);
         System.out.println(" ");
@@ -73,6 +89,11 @@ class Main {
         Main main = new Main();
         InnerClass innerClass = main.new InnerClass();
         Printer.applyAndPrint(2,5,innerClass);
+
+        System.out.println(" ");
+        System.out.println(" ");
+        System.out.println("Fibonacci Folge: ");
+        Printer.applyAndPrint(2,5, operatorFibonacci);
     }
 
     public class InnerClass implements IntUnaryOperator {
