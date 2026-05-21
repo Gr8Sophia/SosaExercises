@@ -22,9 +22,7 @@ class Main {
         };
 
 
-
-
-
+        
         System.out.println("x^2: Lamda");
         Printer.applyAndPrint(2,5,operatorPower);
         System.out.println(" ");
