@@ -15,7 +15,13 @@ class Main {
             return ergebnis;
         };
 
-        IntUnaryOperator operatoriii = x -> 
+        IntUnaryOperator operatoriii = x ->{
+            int power = x+1;
+            int ergebnis = x;
+            return (int) Math.pow(ergebnis,power);
+        };
+
+
 
 
 
@@ -28,7 +34,9 @@ class Main {
         System.out.println(" ");
         System.out.println(" ");
         System.out.println("x: x^(x+1)");
-        Printer.applyAndPrint(2,5,operatorPower);
+        Printer.applyAndPrint(2,5, operatoriii);
+        System.out.println(" ");
+        System.out.println(" ");
 
 
 
