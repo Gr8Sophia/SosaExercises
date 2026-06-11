@@ -18,18 +18,13 @@ public class Inventory {
     }
 
     public List<Product> findProductsByCategory(String category) {
-        List<Product> productList = new ArrayList<Product>();
-        for (Product product : products.values()) {
-            if(product.getCategory().equals(category)) {
-            productList.add(product);
-            }
-        }
-        return productList;
+        return  filterProducts(product -> product.getCategory().equals(category));
     }
 
     public List<Product> getAllProducts() {
-       return new ArrayList<Product>(products.values());
+        return new ArrayList<Product>(products.values());
     }
+
     public List<Product> sortProductsByName(){
         List<Product> sortedProducts = new ArrayList<>(products.values());
         sortedProducts.sort((a, b) -> a.getName().compareTo(b.getName()));
@@ -42,14 +37,9 @@ public class Inventory {
 
     }
     public List<Product> getLowStockProducts(int threshold){
-        List<Product> lowStockProducts = new ArrayList<>();
-        for(Product product : products.values()){
-            if(product.getQuantity() < threshold){
-                lowStockProducts.add(product);
-            }
-        }
-        return lowStockProducts;
+        return filterProducts(product -> product.getQuantity() < threshold);
     }
+
     public List<Product> filterProducts (Predicate<Product> filter){
         List<Product> filteredProducts = new ArrayList<>();
         for(Product product : products.values()){
